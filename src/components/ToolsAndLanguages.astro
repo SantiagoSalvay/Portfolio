@@ -1,0 +1,33 @@
+---
+const tools = [
+  { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
+  { name: "Terminal", icon: "https://cdn.simpleicons.org/gnubash/4EAA25" },
+  { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED" },
+  { name: "XAMPP", icon: "https://cdn.simpleicons.org/xampp/FB7A24" },
+  { name: "Cursor", icon: "/cursor-icon.svg" },
+  { name: "VS Code", icon: "/vscode.svg" },
+  { name: "Photoshop", icon: "/photoshop.svg" },
+  { name: "Postman", icon: "https://cdn.simpleicons.org/postman/FF6C37" },
+  { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" }
+];
+
+const loopTools = [...tools, ...tools];
+---
+
+<section id="tools" class="section-container">
+  <h2 class="mb-8 text-center text-3xl font-bold tracking-tight text-white md:text-4xl">
+    Tools
+  </h2>
+  <div class="marquee mb-10">
+    <div class="marquee-track">
+      {
+        loopTools.map((item) => (
+          <div class="marquee-item">
+            <img src={item.icon} alt={`Icono de ${item.name}`} loading="lazy" />
+            <span>{item.name}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

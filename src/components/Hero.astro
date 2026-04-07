@@ -1,0 +1,75 @@
+---
+const orbitLogos = [
+  { name: "React", icon: "https://cdn.simpleicons.org/react/61DAFB" },
+  { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+  { name: "Node", icon: "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
+  { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED" },
+  { name: "Astro", icon: "https://cdn.simpleicons.org/astro/FF5D01" },
+  { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
+  { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
+  { name: "Postman", icon: "https://cdn.simpleicons.org/postman/FF6C37" },
+  { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1" },
+  { name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+  { name: "Express", icon: "https://cdn.simpleicons.org/express/ffffff" },
+  { name: "Vue", icon: "https://cdn.simpleicons.org/vuedotjs/4FC08D" },
+  { name: "VS Code", icon: "/vscode.svg" },
+  { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" }
+];
+
+const outerOrbit = orbitLogos.slice(0, 7);
+const innerOrbit = orbitLogos.slice(7);
+---
+
+<section id="hero" class="hero-surface">
+  <div class="section-container pt-20 md:pt-28">
+    <div class="fade-in-up grid items-center gap-12 lg:grid-cols-2">
+      <div class="text-center lg:text-left">
+        <p class="mb-4 inline-block rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+          Fullstack Developer Argentino
+        </p>
+        <h1 class="text-5xl font-extrabold tracking-tight text-white md:text-7xl">Hola, soy Santiago</h1>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-300 md:text-lg">
+          Construyo aplicaciones web con React, Astro, Express y Node.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+          <a
+            href="#projects"
+            class="card-hover rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-soft"
+          >
+            Ver proyectos
+          </a>
+          <a
+            href="#contact"
+            class="card-hover rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white"
+          >
+            Contacto
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-orbit-wrap">
+        <div class="hero-avatar-ring">
+          <img src="/profile.png" alt="Foto de perfil de Santiago" class="hero-avatar-img" loading="eager" />
+        </div>
+        <div class="orbit orbit-lg">
+          {
+            outerOrbit.map((item, i) => (
+              <span class="orbit-item" style={`--i:${i}; --n:${outerOrbit.length};`}>
+                <img src={item.icon} alt={`Logo de ${item.name}`} loading="lazy" />
+              </span>
+            ))
+          }
+        </div>
+        <div class="orbit orbit-sm">
+          {
+            innerOrbit.map((item, i) => (
+              <span class="orbit-item orbit-item-sm" style={`--i:${i}; --n:${innerOrbit.length};`}>
+                <img src={item.icon} alt={`Logo de ${item.name}`} loading="lazy" />
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

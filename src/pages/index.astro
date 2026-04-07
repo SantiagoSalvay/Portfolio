@@ -1,0 +1,25 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Skills from "../components/Skills.astro";
+import ToolsAndLanguages from "../components/ToolsAndLanguages.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<MainLayout
+  title="Santiago | Fullstack Developer"
+  description="Portfolio de Santiago, desarrollador fullstack especializado en React, Astro, Node y Express."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <Skills />
+    <ToolsAndLanguages />
+    <Projects />
+    <Contact />
+  </main>
+  <Footer />
+</MainLayout>
