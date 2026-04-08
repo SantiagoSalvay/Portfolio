@@ -3,38 +3,39 @@ import ProjectCard from "./ProjectCard.astro";
 
 const projects = [
   {
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
+    image: "/portfolio-screenshot.png",
     name: "Portfolio Website",
-    description: "Personal portfolio developed with Astro and Tailwind CSS.",
-    stack: ["Astro", "Tailwind", "React"],
-    githubUrl: "https://github.com/",
-    demoUrl: "https://vercel.com/"
+    description: "Personal portfolio developed with Astro, CSS and JavaScript.",
+    stack: ["Astro", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/SantiagoSalvay/Portfolio",
+    demoUrl: "https://www.santysalvay.dev/"
   },
   {
-    image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80",
-    name: "Task Manager App",
-    description: "Task management application with authentication and responsive dashboard.",
-    stack: ["React", "Node", "Express", "MySQL"],
-    githubUrl: "https://github.com/",
-    demoUrl: "https://vercel.com/"
+    image: "/modavista-screenshot.png",
+    name: "ModaVista",
+    description: "ModaVista – Full-Stack Fashion E-commerce Platform.",
+    stack: ["React", "JavaScript", "Express.js", "PostgreSQL", "HTML", "CSS"],
+    githubUrl: "https://github.com/SantiagoSalvay/ModaVista.git",
+    demoUrl: "https://confidential-judi-1modavista-f0249404.koyeb.app/"
   },
   {
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    name: "Analytics Dashboard",
-    description: "Metrics dashboard with data visualization and REST API integration.",
-    stack: ["Next", "Tailwind", "Express"],
-    githubUrl: "https://github.com/",
-    demoUrl: "https://vercel.com/"
+    name: "Coming Soon",
+    description: "New exciting project in development. Stay tuned for updates!",
+    stack: ["TBD"],
+    githubUrl: "#",
+    demoUrl: "#",
+    comingSoon: true
   }
 ];
 ---
 
 <section id="projects" class="section-container scroll-animate opacity-0 translate-y-8">
   <h2 class="mb-6 text-center text-2xl font-bold tracking-tight text-white sm:mb-8 sm:text-3xl md:mb-10 md:text-4xl">Projects</h2>
-  <div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-3">
+  <div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-3 items-stretch">
     {
       projects.map((project, index) => (
-        <div class={`stagger-animate opacity-0 translate-y-4 stagger-${index + 1}`}>
+        <div class={`stagger-animate opacity-0 translate-y-4 stagger-${index + 1} h-full`}>
           <ProjectCard
             image={project.image}
             name={project.name}
@@ -42,6 +43,7 @@ const projects = [
             stack={project.stack}
             githubUrl={project.githubUrl}
             demoUrl={project.demoUrl}
+            comingSoon={project.comingSoon}
           />
         </div>
       ))

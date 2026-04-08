@@ -6,36 +6,57 @@ interface Props {
   stack: string[];
   githubUrl: string;
   demoUrl: string;
+  comingSoon?: boolean;
 }
 
-const { image, name, description, stack, githubUrl, demoUrl } = Astro.props;
+const { image, name, description, stack, githubUrl, demoUrl, comingSoon = false } = Astro.props;
 ---
 
-<article class="card-hover overflow-hidden rounded-xl border border-white/20 bg-white/95 shadow-soft sm:rounded-2xl">
-  <img src={image} alt={`${name} project image`} class="h-40 w-full object-cover sm:h-44 md:h-48" loading="lazy" />
-  <div class="space-y-3 p-4 sm:space-y-4 sm:p-5">
-    <h3 class="text-base font-bold text-slate-900 sm:text-lg">{name}</h3>
-    <p class="text-sm leading-relaxed text-slate-600">{description}</p>
-    <p class="text-xs text-slate-500 sm:text-sm">
-      <span class="font-semibold text-slate-700">Stack:</span> {stack.join(", ")}
-    </p>
-    <div class="flex flex-wrap gap-2 pt-1 sm:gap-3 sm:pt-2">
-      <a
-        href={githubUrl}
-        target="_blank"
-        rel="noreferrer"
-        class="rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white transition hover:opacity-90 sm:px-4 sm:py-2"
-      >
-        GitHub
-      </a>
-      <a
-        href={demoUrl}
-        target="_blank"
-        rel="noreferrer"
-        class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 sm:px-4 sm:py-2"
-      >
-        Demo
-      </a>
+<article class={`card-hover overflow-hidden rounded-xl border border-white/20 bg-white/95 shadow-soft sm:rounded-2xl h-full flex flex-col ${comingSoon ? 'relative' : ''}`}>
+  {comingSoon && (
+    <div class="coming-soon-overlay">
+      <div class="coming-soon-banner">
+        <span class="coming-soon-text">Coming Soon</span>
+      </div>
+    </div>
+  )}
+  <div class={comingSoon ? 'filter grayscale opacity-60' : ''}>
+    <img src={image} alt={`${name} project image`} class="h-40 w-full object-cover sm:h-44 md:h-48" loading="lazy" />
+    <div class="flex flex-col flex-1 p-4 sm:p-5">
+      <div class="flex flex-col flex-1">
+        <h3 class="text-base font-bold text-slate-900 sm:text-lg mb-3 sm:mb-4">{name}</h3>
+        <p class="text-sm leading-relaxed text-slate-600 mb-3 sm:mb-4">{description}</p>
+        <p class="text-xs text-slate-500 sm:text-sm mb-4 sm:mb-6">
+          <span class="font-semibold text-slate-700">Stack:</span> {stack.join(", ")}
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2 sm:gap-3 mt-auto">
+        {!comingSoon ? (
+          <>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white transition hover:opacity-90 sm:px-4 sm:py-2"
+            >
+              GitHub
+            </a>
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 sm:px-4 sm:py-2"
+            >
+              Demo
+            </a>
+          </>
+        ) : (
+          <div class="h-8 sm:h-9 flex items-end">
+            <span class="text-xs text-slate-400 italic">Project in development</span>
+          </div>
+        )}
+      </div>
+    </div>
     </div>
   </div>
 </article>
