@@ -1,3 +1,15 @@
+export async function GET() {
+  return new Response(JSON.stringify({
+    message: "Contact API endpoint. Use POST to send messages.",
+    methods: ["POST"]
+  }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+}
+
 export async function POST({ request }) {
   try {
     const formData = await request.formData();
