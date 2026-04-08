@@ -731,3 +731,53 @@ button:disabled {
 }
 
 /* Responsive breakpoints are now handled with inline Tailwind classes */
+
+@media (max-width: 768px) {
+  .fade-in-up {
+    animation-duration: 0.35s;
+  }
+
+  .hero-avatar-ring,
+  .hero-avatar-img {
+    animation: none;
+  }
+
+  .orbit {
+    animation-duration: 30s;
+    will-change: auto;
+  }
+
+  .orbit-sm {
+    display: none;
+  }
+
+  .orbit-item {
+    box-shadow: 0 0 10px rgba(147, 197, 253, 0.16);
+  }
+
+  .marquee-track {
+    animation-duration: 45s;
+    will-change: auto;
+  }
+
+  .marquee-item {
+    backdrop-filter: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .marquee-item:hover {
+    transform: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up,
+  .orbit,
+  .hero-avatar-ring,
+  .hero-avatar-img,
+  .marquee-track {
+    animation: none !important;
+    transition: none !important;
+  }
+}
