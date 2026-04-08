@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BackgroundParticles from '../components/BackgroundParticles.astro';
 
 interface Props {
   title?: string;
@@ -8,12 +9,12 @@ interface Props {
 
 const {
   title = "Santiago | Fullstack Developer",
-  description = "Portfolio de Santiago, desarrollador fullstack especializado en React, Astro, Node y Express."
+  description = "Santiago's portfolio, a fullstack developer specialized in React, Astro, Node and Express."
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,6 +23,46 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <BackgroundParticles />
     <slot />
+    
+    <script>
+      // Intersection Observer para animaciones de scroll
+      function initScrollAnimations() {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-in');
+              
+              // Animaciones escalonadas para elementos hijo
+              const children = entry.target.querySelectorAll('.stagger-animate');
+              children.forEach((child, index) => {
+                child.style.transitionDelay = `${index * 0.1}s`;
+                child.classList.add('animate-in');
+              });
+              
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Observar todos los elementos con clase scroll-animate
+        document.querySelectorAll('.scroll-animate').forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      // Inicializar cuando el DOM esté listo
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+      } else {
+        initScrollAnimations();
+      }
+    </script>
   </body>
 </html>

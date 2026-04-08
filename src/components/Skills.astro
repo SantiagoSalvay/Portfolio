@@ -10,6 +10,7 @@ const languages = [
   { name: "Node", icon: "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
   { name: "Express", icon: "https://cdn.simpleicons.org/express/1f2937" },
   { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1" },
+  { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1" },
   { name: "Next", icon: "https://cdn.simpleicons.org/nextdotjs/111827" },
   { name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" }
 ];
@@ -17,18 +18,97 @@ const languages = [
 const loopLanguages = [...languages, ...languages];
 ---
 
-<section id="skills" class="section-container">
-  <h2 class="mb-10 text-center text-3xl font-bold tracking-tight text-white md:text-4xl">Skills</h2>
-  <div class="marquee">
-    <div class="marquee-track marquee-track-reverse">
-      {
-        loopLanguages.map((item) => (
-          <div class="marquee-item">
-            <img src={item.icon} alt={`Icono de ${item.name}`} loading="lazy" />
-            <span>{item.name}</span>
-          </div>
-        ))
-      }
+<section id="skills" class="section-container scroll-animate opacity-0 translate-y-8">
+  <h2 class="mb-8 text-center text-2xl font-bold tracking-tight text-white sm:mb-10 sm:text-3xl md:text-4xl">Skills</h2>
+  <div class="flex flex-col lg:flex-row gap-0 items-center justify-center max-w-6xl mx-auto">
+    <!-- Ventana de código estilo VS Code -->
+    <div class="code-window flex-shrink-0">
+      <div class="code-header">
+        <div class="window-controls">
+          <div class="control close"></div>
+          <div class="control minimize"></div>
+          <div class="control maximize"></div>
+        </div>
+        <div class="file-tab">
+          <span class="file-icon">📄</span>
+          <span class="file-name">santiago.js</span>
+        </div>
+      </div>
+      <div class="code-content">
+        <div class="line">
+          <span class="line-number">1</span>
+          <span class="code">
+            <span class="keyword">const</span> <span class="variable">developer</span> = {
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">2</span>
+          <span class="code">
+            &nbsp;&nbsp;<span class="property">name</span>: <span class="string">"Santiago"</span>,
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">3</span>
+          <span class="code">
+            &nbsp;&nbsp;<span class="property">role</span>: <span class="string">"Fullstack Developer"</span>,
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">4</span>
+          <span class="code">
+            &nbsp;&nbsp;<span class="property">skills</span>: [
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">5</span>
+          <span class="code">
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"React"</span>, <span class="string">"Node.js"</span>, <span class="string">"JavaScript"</span>,
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">6</span>
+          <span class="code">
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"TypeScript"</span>, <span class="string">"Express"</span>, <span class="string">"MySQL"</span>,
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">7</span>
+          <span class="code">
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Astro"</span>, <span class="string">"Tailwind"</span>, <span class="string">"Vue"</span>
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">8</span>
+          <span class="code">
+            &nbsp;&nbsp;],
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">9</span>
+          <span class="code">
+            &nbsp;&nbsp;<span class="property">passion</span>: <span class="string">"Building amazing web experiences"</span>
+          </span>
+        </div>
+        <div class="line">
+          <span class="line-number">10</span>
+          <span class="code">
+            };
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carrusel de iconos horizontal -->
+    <div class="skills-carousel">
+      <div class="carousel-track-horizontal">
+        {
+          [...languages, ...languages, ...languages, ...languages, ...languages].map((item, index) => (
+            <div class="skill-icon">
+              <img src={item.icon} alt={`${item.name} icon`} loading="lazy" />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
