@@ -107,13 +107,15 @@ body {
   inset: 0;
   margin: auto;
   border-radius: 9999px;
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
   animation: spin 20s linear infinite;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
   -webkit-animation: spin 20s linear infinite;
+  -moz-animation: spin 20s linear infinite;
+  -o-animation: spin 20s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .orbit-lg {
@@ -128,6 +130,10 @@ body {
   animation-duration: 14s;
   -webkit-animation-direction: reverse;
   -webkit-animation-duration: 14s;
+  -moz-animation-direction: reverse;
+  -moz-animation-duration: 14s;
+  -o-animation-direction: reverse;
+  -o-animation-duration: 14s;
 }
 
 @media (min-width: 640px) {
@@ -318,11 +324,40 @@ body {
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg) translateZ(0);
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg) translateZ(0);
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(360deg);
   }
 }
 
