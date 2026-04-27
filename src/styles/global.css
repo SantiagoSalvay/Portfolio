@@ -109,6 +109,9 @@ body {
   animation: spin 20s linear infinite;
   will-change: transform;
   transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
 }
 
 .orbit-lg {
@@ -121,6 +124,8 @@ body {
   height: 240px;
   animation-direction: reverse;
   animation-duration: 14s;
+  -webkit-animation-direction: reverse;
+  -webkit-animation-duration: 14s;
 }
 
 @media (min-width: 640px) {
@@ -312,10 +317,19 @@ body {
 
 @keyframes spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateZ(0);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
 
