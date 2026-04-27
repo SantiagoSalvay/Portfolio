@@ -22,7 +22,7 @@ const innerOrbit = orbitLogos.slice(7);
 
 <section id="hero" class="hero-surface flex items-center py-12 sm:py-16 md:min-h-screen md:py-0">
   <div class="section-container">
-    <div class="fade-in-up grid items-center gap-8 sm:gap-12 lg:grid-cols-2">
+    <div class="fade-in-up grid items-center gap-12 sm:gap-16 lg:grid-cols-2">
       <div class="text-center lg:text-left">
         <p class="mb-3 inline-block rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:mb-4 sm:px-4 sm:py-2">
           Argentinian Fullstack Developer
@@ -81,3 +81,33 @@ const innerOrbit = orbitLogos.slice(7);
     </div>
   </div>
 </section>
+
+<script>
+  // Animación de rotación para los orbits usando requestAnimationFrame
+  let rotationAngle = 0;
+  let reverseRotationAngle = 0;
+
+  function animateOrbits() {
+    const orbitLg = document.querySelector('.orbit-lg');
+    const orbitSm = document.querySelector('.orbit-sm');
+
+    if (orbitLg) {
+      rotationAngle += 0.05; // Velocidad de rotación
+      orbitLg.style.transform = `rotate(${rotationAngle}deg)`;
+    }
+
+    if (orbitSm) {
+      reverseRotationAngle -= 0.035; // Velocidad inversa más lenta
+      orbitSm.style.transform = `rotate(${reverseRotationAngle}deg)`;
+    }
+
+    requestAnimationFrame(animateOrbits);
+  }
+
+  // Iniciar animación cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', animateOrbits);
+  } else {
+    animateOrbits();
+  }
+</script>

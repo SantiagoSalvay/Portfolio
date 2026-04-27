@@ -38,7 +38,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -20px;
+  margin-top: 20px;
 }
 
 .hero-avatar-ring {
@@ -107,12 +107,6 @@ body {
   inset: 0;
   margin: auto;
   border-radius: 9999px;
-  transform-origin: center center;
-  -webkit-transform-origin: center center;
-  animation: spin 20s linear infinite;
-  -webkit-animation: spin 20s linear infinite;
-  -moz-animation: spin 20s linear infinite;
-  -o-animation: spin 20s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
