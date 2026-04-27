@@ -738,24 +738,25 @@ button:disabled {
 /* Responsive breakpoints are now handled with inline Tailwind classes */
 
 @media (max-width: 768px) {
+  /* Kill all non-essential animations on mobile */
   .fade-in-up {
-    animation-duration: 0.35s;
+    animation: none;
+    opacity: 1;
   }
 
   .hero-avatar-ring {
     animation: none;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
   }
 
   .hero-avatar-img {
     animation: none;
-    filter: saturate(1.25) contrast(1.1) brightness(1.03);
+    filter: none;
   }
 
+  /* Completely disable orbit rotation on mobile */
   .orbit {
-    animation-duration: 30s;
-    will-change: transform;
-    transform: translateZ(0);
+    animation: none;
   }
 
   .orbit-sm {
@@ -763,8 +764,29 @@ button:disabled {
   }
 
   .orbit-item {
-    box-shadow: 0 0 10px rgba(147, 197, 253, 0.16);
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     backface-visibility: hidden;
+  }
+
+  /* Simplify carousels */
+  .carousel-track-horizontal {
+    animation-duration: 50s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .tools-carousel-track {
+    animation-duration: 40s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .skill-icon,
+  .tool-icon {
+    box-shadow: none;
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    transition: none;
   }
 
   .marquee-track {
@@ -775,41 +797,60 @@ button:disabled {
 
   .marquee-item {
     backdrop-filter: none;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
     transition: none;
   }
 
   .marquee-item:hover {
     transform: none;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  }
-
-  .carousel-track-horizontal,
-  .tools-carousel-track {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    perspective: 1000px;
+    box-shadow: none;
   }
 
   /* Disable coming soon heavy animations on mobile */
   .coming-soon-banner {
     animation: none;
-    box-shadow: 0 0 15px rgba(251, 191, 36, 0.5), 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
   }
 
   .coming-soon-banner::before {
     animation: none;
   }
 
-  /* Reduce particle complexity */
+  /* Kill all particles on mobile */
   .particle {
-    animation-duration: 40s !important;
+    display: none !important;
   }
 
-  .particle-4,
-  .particle-5,
-  .particle-6 {
-    display: none;
+  /* Disable scroll animations - show everything immediately */
+  .scroll-animate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .stagger-animate {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Use content-visibility for off-screen performance */
+  #skills,
+  #tools,
+  #projects,
+  #contact {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+
+  /* Disable all hover effects on touch */
+  .card-hover {
+    transition: none;
+  }
+
+  .card-hover:hover {
+    transform: none;
+    box-shadow: inherit;
   }
 }
 
