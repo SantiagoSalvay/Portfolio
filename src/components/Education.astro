@@ -1,0 +1,144 @@
+---
+interface EducationItem {
+  institution: string;
+  degree: string;
+  field: string;
+  startDate: string;
+  endDate: string;
+  period: string;
+  logo: string;
+  highlights: string[];
+}
+
+const education: EducationItem[] = [
+  {
+    institution: "Universidad Blas Pascal",
+    degree: "Engineering Degree",
+    field: "Computer Software Engineering",
+    startDate: "2026-03",
+    endDate: "Present",
+    period: "Mar. 2026 - Present",
+    logo: "/ubp-logo.png",
+    highlights: ["Software Engineering", "Computer Science", "Full Stack Development"]
+  },
+  {
+    institution: "Instituto Técnico Salesiano Villada",
+    degree: "Technical Degree",
+    field: "Programming Technician",
+    startDate: "2019-03",
+    endDate: "2025-12",
+    period: "Mar. 2019 - Dec. 2025",
+    logo: "/villada-logo.png",
+    highlights: ["Programming", "Backend Development", "Problem Solving"]
+  }
+];
+---
+
+<section id="education" class="section-container scroll-animate opacity-0 translate-y-8">
+  <h2 class="mb-12 text-center text-2xl font-bold tracking-tight text-white sm:mb-14 sm:text-3xl md:mb-16 md:text-4xl">Education</h2>
+  
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:gap-8">
+      {education.map((edu, index) => (
+        <div class={`stagger-animate opacity-0 translate-y-4 stagger-${index + 1} group relative`}>
+          <!-- Main Education Card -->
+          <div class="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-blue-500/30 hover:border-blue-400/80 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 relative overflow-hidden">
+            <!-- Background Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10">
+              <!-- Header with Logo -->
+              <div class="flex flex-col md:flex-row md:items-start gap-6 mb-6">
+                <!-- Logo -->
+                {edu.logo && (
+                  <div class="flex-shrink-0">
+                    <img 
+                      src={edu.logo} 
+                      alt={edu.institution}
+                      class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover border border-blue-400/50 group-hover:border-blue-300/80 transition-all duration-300"
+                    />
+                  </div>
+                )}
+                
+                <!-- Institution Info -->
+                <div class="flex-1">
+                  <h3 class="text-xl md:text-2xl font-bold text-white mb-2">
+                    {edu.institution}
+                  </h3>
+                  <p class="text-blue-300 font-semibold text-lg mb-1">
+                    {edu.degree}
+                  </p>
+                  <p class="text-gray-300 mb-3">
+                    {edu.field}
+                  </p>
+                  
+                  <!-- Timeline -->
+                  <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>{edu.period}</span>
+                  </div>
+                </div>
+                
+                <!-- Duration Badge -->
+                <div class="md:text-right">
+                  {edu.endDate === "Present" ? (
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/25 border border-green-400/60 text-green-100 text-sm font-bold">
+                      <span class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
+                      Ongoing
+                    </span>
+                  ) : (
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/60 text-emerald-200 text-sm font-bold">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                      Completed
+                    </span>
+                  )}
+                </div>
+              </div>
+              
+              <!-- Highlights/Skills -->
+              <div class="mt-6 pt-6 border-t border-blue-500/20">
+                <p class="text-gray-400 text-sm font-semibold mb-3">Key Areas:</p>
+                <div class="flex flex-wrap gap-2">
+                  {edu.highlights.map((highlight) => (
+                    <span class="px-3 py-1.5 rounded-lg bg-blue-500/15 border border-blue-400/40 text-blue-300 text-sm hover:bg-blue-500/25 hover:border-blue-400/60 transition-all duration-200 cursor-default">
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-container {
+    padding: 3rem 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @media (min-width: 768px) {
+    .section-container {
+      padding: 4rem 0;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
