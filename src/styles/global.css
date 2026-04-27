@@ -11,7 +11,6 @@ html {
 body {
   @apply text-slate-100 antialiased;
   background:
-    radial-gradient(circle at 80% 12%, rgba(34, 211, 238, 0.12), transparent 35%),
     linear-gradient(180deg, #020617 0%, #1e293b 100%);
 }
 
@@ -21,11 +20,11 @@ body {
 
 
 .card-hover {
-  @apply transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-soft;
+  @apply transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-soft;
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.7s ease-out both;
+  animation: fadeInUp 0.5s ease-out both;
   will-change: transform, opacity;
 }
 
