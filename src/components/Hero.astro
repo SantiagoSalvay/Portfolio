@@ -83,31 +83,52 @@ const innerOrbit = orbitLogos.slice(7);
 </section>
 
 <script>
-  // Animación de rotación para los orbits usando requestAnimationFrame
+  // Animación de rotación optimizada para móviles
   let rotationAngle = 0;
   let reverseRotationAngle = 0;
+  let lastFrameTime = 0;
+  let orbitLg = null;
+  let orbitSm = null;
+  const FRAME_RATE = 1000 / 30; // 30 FPS en lugar de 60 para optimizar Android
 
-  function animateOrbits() {
-    const orbitLg = document.querySelector('.orbit-lg');
-    const orbitSm = document.querySelector('.orbit-sm');
+  function initOrbits() {
+    orbitLg = document.querySelector('.orbit-lg');
+    orbitSm = document.querySelector('.orbit-sm');
+  }
+
+  function animateOrbits(currentTime) {
+    // Throttling para limitar la tasa de actualización en móvil
+    if (currentTime - lastFrameTime < FRAME_RATE) {
+      requestAnimationFrame(animateOrbits);
+      return;
+    }
+    lastFrameTime = currentTime;
+
+    if (!orbitLg || !orbitSm) {
+      initOrbits();
+    }
 
     if (orbitLg) {
-      rotationAngle += 0.05; // Velocidad de rotación
+      rotationAngle += 0.5; // Velocidad mucho más rápida
       orbitLg.style.transform = `rotate(${rotationAngle}deg)`;
     }
 
     if (orbitSm) {
-      reverseRotationAngle -= 0.035; // Velocidad inversa más lenta
+      reverseRotationAngle -= 0.4; // Velocidad inversa mucho más rápida
       orbitSm.style.transform = `rotate(${reverseRotationAngle}deg)`;
     }
 
     requestAnimationFrame(animateOrbits);
   }
 
-  // Iniciar animación cuando el DOM esté listo
+  // Iniciar animación
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', animateOrbits);
+    document.addEventListener('DOMContentLoaded', () => {
+      initOrbits();
+      requestAnimationFrame(animateOrbits);
+    });
   } else {
-    animateOrbits();
+    initOrbits();
+    requestAnimationFrame(animateOrbits);
   }
 </script>
